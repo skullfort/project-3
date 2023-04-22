@@ -3,7 +3,7 @@
 Group Members: Carly Yiao, GUSTAVO PIRES, RICHARD GU, TINA SARAVI, & VARUN VINODH
 
 
-Last Update: 2023-04-2023
+Last Update: 2023-04-22
 
 This repository presents an Interactive Dashboard with visualizations of Casual and Members of 2021-2022 and a Open-Map Visualization of Geospatial Biking Summary.
 
