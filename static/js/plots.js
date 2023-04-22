@@ -1,16 +1,19 @@
 // Initialize webpage
+
+let url = './data/data_summary.json';
+
 function init() {
-  d3.json('data/user_count_summary.json').then(
-    function (data) {
-
-      // Some kind of organization of data
-
+  d3.json(url).then(
+    function (Res) {
+      let data = Res[0];
+      console.log(data)
       // Make initial plots
-      barplots(data);
+      barplots(data['trip_count']);
 
     }
   )
 };
+
 function barplots(data) {
 
   //trace 1 casual trip count by month for 2021
@@ -248,29 +251,31 @@ function barplots(data) {
         family: 'Arial, sans-serif',
         size: 30,
         bold: true
-      }},
-      xaxis: {
-        title: {
-          text: 'Hours',
-          font: {
-            family: 'Arial, sans-serif',
-            size: 18,
-            color: '#7f7f7f'
-          }
-        },
-        tickvals: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
-    ticktext: ['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm'],
-    categoryarray: ['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm']
+      }
+    },
+    xaxis: {
+      title: {
+        text: 'Hours',
+        font: {
+          family: 'Arial, sans-serif',
+          size: 18,
+          color: '#7f7f7f'
+        }
       },
-      yaxis: {
-        title: {
-          text: 'Trip Count',
-          font: {
-            family: 'Arial, sans-serif',
-            size: 18,
-            color: '#7f7f7f'
-      
-        }},
+      tickvals: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+      ticktext: ['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm'],
+      categoryarray: ['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm']
+    },
+    yaxis: {
+      title: {
+        text: 'Trip Count',
+        font: {
+          family: 'Arial, sans-serif',
+          size: 18,
+          color: '#7f7f7f'
+
+        }
+      },
       showlegend: true,
       legend: { "orientation": "h" },
       yaxis: { title: 'trip Count' },
@@ -281,7 +286,7 @@ function barplots(data) {
 
 function lineplots(data) {
   //trace 1 casual avg duration by month for 2021
-  let casual_avg_dur_by_month = months.map(x => data['2021']['Casual'][x]).map(y => y/60);
+  let casual_avg_dur_by_month = months.map(x => data['2021']['Casual'][x]).map(y => y / 60);
   let trace1 = {
     x: months,
     y: casual_avg_dur_by_month,
@@ -294,7 +299,7 @@ function lineplots(data) {
   };
 
   //trace 2 member avg duration by month for 2021
-  let member_avg_dur_by_month = months.map(x => data['2021']['Member'][x]).map(y => y/60);
+  let member_avg_dur_by_month = months.map(x => data['2021']['Member'][x]).map(y => y / 60);
   let trace2 = {
     x: months,
     y: member_avg_dur_by_month,
@@ -306,7 +311,7 @@ function lineplots(data) {
     }
   };
   //trace 3 casual average duration by month for 2022
-  let casual_avg_dur_by_month22 = months.map(x => data['2022']['Casual'][x]).map(y => y/60);
+  let casual_avg_dur_by_month22 = months.map(x => data['2022']['Casual'][x]).map(y => y / 60);
   let trace3 = {
     x: months,
     y: casual_avg_dur_by_month22,
@@ -318,7 +323,7 @@ function lineplots(data) {
     }
   };
   //trace 4 member avg duration by month for 2022
-  let member_avg_dur_by_month22 = months.map(x => data['2022']['Member'][x]).map(y => y/60);
+  let member_avg_dur_by_month22 = months.map(x => data['2022']['Member'][x]).map(y => y / 60);
   let trace4 = {
     x: months,
     y: member_avg_dur_by_month22,
@@ -331,7 +336,7 @@ function lineplots(data) {
   };
 
   //trace 5 casual avg duration by days for 2021
-  let casual_avg_dur_by_day = days.map(x => data['2021']['Casual'][x]).map(y => y/60);
+  let casual_avg_dur_by_day = days.map(x => data['2021']['Casual'][x]).map(y => y / 60);
   let trace5 = {
     x: days,
     y: casual_avg_dur_by_day,
@@ -344,7 +349,7 @@ function lineplots(data) {
   };
 
   // trace 6 member average duration by days for 2021
-  let member_avg_dur_by_day = days.map(x => data['2021']['Member'][x]).map(y => y/60);
+  let member_avg_dur_by_day = days.map(x => data['2021']['Member'][x]).map(y => y / 60);
   let trace6 = {
     x: days,
     y: member_avg_dur_by_day,
@@ -356,7 +361,7 @@ function lineplots(data) {
     }
   };
   //trace 7 casual average Duration by days for 2022
-  let casual_avg_dur_by_day22 = days.map(x => data['2022']['Casual'][x]).map(y => y/60);
+  let casual_avg_dur_by_day22 = days.map(x => data['2022']['Casual'][x]).map(y => y / 60);
   let trace7 = {
     x: days,
     y: casual_avg_dur_by_day22,
@@ -368,7 +373,7 @@ function lineplots(data) {
     }
   };
   //trace 8 member trip count by days for 2022
-  let member_avg_dur_by_day22 = days.map(x => data['2022']['Member'][x]).map(y => y/60);
+  let member_avg_dur_by_day22 = days.map(x => data['2022']['Member'][x]).map(y => y / 60);
   let trace8 = {
     x: days,
     y: member_avg_dur_by_day22,
@@ -380,7 +385,7 @@ function lineplots(data) {
     }
   };
   //trace 9 casual avg duration by hours for 2021
-  let casual_avg_dur_by_hours = hours.map(x => data['2021']['Casual'][x]).map(y => y/60);
+  let casual_avg_dur_by_hours = hours.map(x => data['2021']['Casual'][x]).map(y => y / 60);
   let trace9 = {
     x: hours,
     y: casual_avg_dur_by_hours,
@@ -394,7 +399,7 @@ function lineplots(data) {
   };
 
   // trace 10 member trips count by hours for 2021
-  let member_avg_dur_by_hours = hours.map(x => data['2021']['Member'][x]).map(y => y/60);
+  let member_avg_dur_by_hours = hours.map(x => data['2021']['Member'][x]).map(y => y / 60);
   let trace10 = {
     x: hours,
     y: member_avg_dur_by_hours,
@@ -407,7 +412,7 @@ function lineplots(data) {
     }
   };
   //trace 11 casual trip count by hours for 2022
-  let casual_avg_dur_by_hours22 = hours.map(x => data['2022']['Casual'][x]).map(y => y/60);
+  let casual_avg_dur_by_hours22 = hours.map(x => data['2022']['Casual'][x]).map(y => y / 60);
   let trace11 = {
     x: hours,
     y: casual_avg_dur_by_hours22,
@@ -420,7 +425,7 @@ function lineplots(data) {
     }
   };
   //trace 12 member trip count by hours for 2022
-  let member_avg_dur_by_hours22 = hours.map(x => data['2022']['Member'][x]).map(y => y/60);
+  let member_avg_dur_by_hours22 = hours.map(x => data['2022']['Member'][x]).map(y => y / 60);
   let trace12 = {
     x: hours,
     y: member_avg_dur_by_hours22,
@@ -442,26 +447,28 @@ function lineplots(data) {
         family: 'Arial, sans-serif',
         size: 30,
         bold: true
-      }},
-      xaxis: {
-        title: {
-          text: 'Months',
-          font: {
-            family: 'Arial, sans-serif',
-            size: 18,
-            color: '#7f7f7f'
-          }
-        },
+      }
+    },
+    xaxis: {
+      title: {
+        text: 'Months',
+        font: {
+          family: 'Arial, sans-serif',
+          size: 18,
+          color: '#7f7f7f'
+        }
       },
-      yaxis: {
-        title: {
-          text: 'Average Trip Duration (minutes)',
-          font: {
-            family: 'Arial, sans-serif',
-            size: 18,
-            color: '#7f7f7f'
-      
-        }},
+    },
+    yaxis: {
+      title: {
+        text: 'Average Trip Duration (minutes)',
+        font: {
+          family: 'Arial, sans-serif',
+          size: 18,
+          color: '#7f7f7f'
+
+        }
+      },
       showlegend: true,
       legend: { "orientation": "h" },
       yaxis: { title: 'Average Duration' },
@@ -478,26 +485,28 @@ function lineplots(data) {
         family: 'Arial, sans-serif',
         size: 30,
         bold: true
-      }},
-      xaxis: {
-        title: {
-          text: 'Days of the Week',
-          font: {
-            family: 'Arial, sans-serif',
-            size: 18,
-            color: '#7f7f7f'
-          }
-        },
+      }
+    },
+    xaxis: {
+      title: {
+        text: 'Days of the Week',
+        font: {
+          family: 'Arial, sans-serif',
+          size: 18,
+          color: '#7f7f7f'
+        }
       },
-      yaxis: {
-        title: {
-          text: 'Average Trip Duration (minutes)',
-          font: {
-            family: 'Arial, sans-serif',
-            size: 18,
-            color: '#7f7f7f'
-      
-        }},
+    },
+    yaxis: {
+      title: {
+        text: 'Average Trip Duration (minutes)',
+        font: {
+          family: 'Arial, sans-serif',
+          size: 18,
+          color: '#7f7f7f'
+
+        }
+      },
       showlegend: true,
       legend: { "orientation": "h" },
       yaxis: { title: 'Average Duration' },
@@ -514,28 +523,30 @@ function lineplots(data) {
         family: 'Arial, sans-serif',
         size: 30,
         bold: true
-      }},
-      xaxis: {
-        title: {
-          text: 'Hours',
-          font: {
-            family: 'Arial, sans-serif',
-            size: 18,
-            color: '#7f7f7f'
-          }
-        },
-        tickvals: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
-        ticktext: ['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm'],
-        categoryarray: ['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm']
+      }
+    },
+    xaxis: {
+      title: {
+        text: 'Hours',
+        font: {
+          family: 'Arial, sans-serif',
+          size: 18,
+          color: '#7f7f7f'
+        }
       },
-      yaxis: {
-        title: {
-          text: 'Average Trip Duration (minutes)',
-          font: {
-            family: 'Arial, sans-serif',
-            size: 18,
-            color: '#7f7f7f'
-        }},
+      tickvals: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+      ticktext: ['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm'],
+      categoryarray: ['12am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm']
+    },
+    yaxis: {
+      title: {
+        text: 'Average Trip Duration (minutes)',
+        font: {
+          family: 'Arial, sans-serif',
+          size: 18,
+          color: '#7f7f7f'
+        }
+      },
       showlegend: true,
       legend: { "orientation": "h" },
       yaxis: { title: 'Average Duration' },
@@ -547,16 +558,19 @@ function lineplots(data) {
 // add event listener to the dropdown menu
 function optionChanged(sel) {
   if (sel === 'Trip Count Analysis') {
-    d3.json('data/user_count_summary.json').then(
-      function (data) {
-        barplots(data);
+    d3.json(url).then(
+      function (Res) {
+        let data = Res[0];
+        barplots(data['trip_count']);
       }
     );
   } else if (sel === 'Average Trip Duration Analysis') {
-    d3.json('data/avg_dur_summary.json').then(
-      function (data) {
-        lineplots(data);
-      })
+    d3.json(url).then(
+      function (Res) {
+        let data = Res[0];
+        lineplots(data['trip_avg_dur']);
+      }
+    )
   }
 }
 
