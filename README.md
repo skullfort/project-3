@@ -1,6 +1,6 @@
 # Project 3
 
-Group Members: Carly Yiao, GUSTAVO PIRES, RICHARD GU, TINA SARAVI, & VARUN VINODH
+Group Members: Carly Yiao, Gustavo Pires, Richard Gu, Tina Saravi, & Varun Vinodh
 
 
 Last Update: 2023-04-22
