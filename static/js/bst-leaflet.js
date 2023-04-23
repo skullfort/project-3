@@ -1,8 +1,7 @@
 let baseMaps = {
   'Street': L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}),
-  'Gray': L.esri.basemapLayer('Gray'),
-  'Dark': L.esri.basemapLayer('DarkGray'),
+  'Dark': L.esri.basemapLayer('DarkGray')
 };
 
 //
@@ -21,10 +20,10 @@ let bikeIcons = {
   })
 };
 
-d3.json('static/js/data_summary.json').then(
+d3.json(url).then(
   function (stationRes) {
-    stations = stationRes[0].stations;
-    let percentColors = chroma.scale(['blue', 'orange']).colors(6); 
+    let stations = stationRes[0].stations;
+    let percentColors = chroma.scale('OrRd').colors(6); 
     let countColors = chroma.scale(['008ae5', 'yellow']).domain([0, 5000]);
     
     // 2021
@@ -39,7 +38,7 @@ d3.json('static/js/data_summary.json').then(
         // dashArray: '4',
         fillOpacity: 0.8
         // color: getColor(value['Yearly Casual Trip Percentage'])
-      }).bindPopup(`Yearly Casual Trip Count: ${value['Yearly Total Trips']}`);
+      }).bindPopup(`2021 Yearly Trip Count <hr> ${value['Yearly Total Trips']}`);
       percentMarkers2021.push(percentMarker);
 
       let countMarker = L.circle([value.Lat, value.Lon], {
@@ -72,7 +71,7 @@ d3.json('static/js/data_summary.json').then(
         color: percentColors[Math.floor(value['Yearly Casual Trip Percentage']/20)],
         fillOpacity: 0.8
         // color: getColor(value['Yearly Casual Trip Percentage'])
-      }).bindPopup(`Yearly Casual Trip Count: ${value['Yearly Total Trips']}`);
+      }).bindPopup(`2022 Yearly Trip Count <hr> ${value['Yearly Total Trips']}`);
       percentMarkers2022.push(percentMarker);
 
       let countMarker = L.circle([value.Lat, value.Lon], {
@@ -86,9 +85,9 @@ d3.json('static/js/data_summary.json').then(
     }
     let percentLayer2022 = L.layerGroup(percentMarkers2022);
 
-    d3.json('static/js/station_7015.json').then(
+    d3.json(flowmapURL).then(
       function (flowmapRes) {
-        let flowMapOverlay = L.canvasFlowmapLayer(flowmapRes, {
+        let flowMapOverlay = L.canvasFlowmapLayer(flowmapRes[0], {
           originAndDestinationFieldIds: {
             originUniqueIdField: 'origin_id',
             originGeometry: {
