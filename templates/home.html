@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Prototype Layout</title>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  {% block head %}
+  <title>{% block title %}Home{% endblock %}</title>
   <style>
+    /* CSS for layout */
     html {
       position: relative;
       min-height: 100%;
@@ -31,7 +32,6 @@
       padding: 0;
       font-size: 30px;
     }
-    /* CSS for layout */
     .container {
       display: grid;
       grid-template-rows: auto 1fr; /* Auto height for title and tabs, 1fr for content */
@@ -84,7 +84,7 @@
       background-image: url(''); /* Set the image as the background */
       background-size: cover; /* Scale the image to cover the entire body */
       opacity: 1.0; /* Set the opacity of the body to make it transparent */
-      padding-bottom: 100px;
+      /* padding-bottom: 100px; */
       background-color: #fffffffc;
     }
   </style>
@@ -100,8 +100,10 @@
       document.getElementById(tabId).classList.add('active');
     }
   </script>
+  {% endblock %}
 </head>
 <body>
+  {% block body %}
   <div class="container">
     <div class="header">
       <h1 style="color:  #DCE2DC">Bike Share Toronto Analysis</h1>
@@ -112,21 +114,22 @@
         </div>
     </div>
     <div class="content">
+      {% block content %}
       <div class="tab-content active" id="home">
         <h2 style="color: rgb(6, 4, 4); font-weight: bold; font-size: 45px;">Overview</h2>
-        <p style=";">The aim of our project is to see how the biking system in Toronto can be improved, the key differences of casual and annual members, and what story do the bike stations tell. We’ll examine relationships between the bike locations, paths each bike takes, the duration of usage, type of membership, etc.</p>
-        <p style="; line-height: 5"> </p>
+        <p>The aim of our project is to see how the biking system in Toronto can be improved, the key differences of casual and annual members, and what story do the bike stations tell. We’ll examine relationships between the bike locations, paths each bike takes, the duration of usage, type of membership, etc.</p>
+      </div>
+      <div class="tab-content" id="analysis"></div>
+      <div class="tab-content" id="map"></div>
+      {% endblock %}
     </div>
-      <div class="tab-content" id="analysis">
-      </div>
-      <div class="tab-content" id="map">
-      </div>
-      <div class="footer">
-        <p style="font-weight: bold; font-size: 24px;">Analysts:</p>
-        <p style="line-height: 2;"> Carly Yiao, Gustavo Pires, Richard Gu, Tina Saravi, Varun Vinodh</p>
-        <hr>
-      </div>
+    <div class="footer">
+      {% block footer %}
+      <p style="font-weight: bold; font-size: 24px;">Collaborators</p>
+      <p style="line-height: 2;"> Carly Yiao, Gustavo Pires, Richard Gu, Tina Saravi, Varun Vinodh</p>
+      {% endblock %}
     </div>
   </div>
+  {% endblock %}
 </body>
 </html>

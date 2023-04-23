@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Prototype Layout</title>
+{% extends "home.html" %}
+{% block title %}Map{% endblock %}
+{% block head %}
+  {{ super() }}
   <!-- D3 library -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
 
@@ -37,166 +36,29 @@
   <!-- CanvasFlowMapLayer -->
   <script src="{{url_for('static', filename='js/CanvasFlowmapLayer.js')}}"></script>
 
-  <!-- Project CSS -->
+  <!-- Custom Leaflet CSS -->
   <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+{% endblock %}
 
-  <style>
-    html {
-      position: relative;
-      min-height: 100%;
-    }
-    p {
-      margin: 0;
-      padding: 0;
-      left: 0;
-      font-size: 30px;
-    }
-    .footer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #2C2F2C;
-      color: white;
-      padding: 10px;
-      text-align: left;
-    }
-    ul {
-      list-style-type: disc;
-      list-style-position: inside;
-      margin: 0;
-      padding: 0;
-      font-size: 30px;
-    }
-    /* CSS for layout */
-    .container {
-      display: grid;
-      grid-template-rows: auto 1fr; /* Auto height for title and tabs, 1fr for content */
-      grid-gap: 10px;
-      overflow: auto;
-      padding-bottom: 50px; /* add padding to create space between last paragraph and footer */
-    }
-    .header {
-      /* Remove grid-column property */
-      background-color: #2C2F2C;
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .sidebar {
-      /* Remove grid-column property */
-      margin-top: 10px;
-      background-color: #2C2F2C;
-      padding: 10px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
-    .content {
-      /* Remove padding-top property */
-      padding: 10px;
-    }
-    /* CSS for tabs */
-    .tab {
-      display: inline-block; /* Change display property to inline-block */
-      margin-right: 10px; /* Add margin between tabs */
-      cursor: pointer;
-      padding: 8px 16px;
-      background-color: #DCE4DC;
-      border: none;
-      border-radius: 4px;
-    }
-    .tab:hover {
-      background-color: #2DB013;
-    }
-    .tab-content {
-      display: none;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    /* CSS for transparent background */
-    body {
-      background-image: url(''); /* Set the image as the background */
-      background-size: cover; /* Scale the image to cover the entire body */
-      opacity: 1.0; /* Set the opacity of the body to make it transparent */
-      padding-bottom: 100px;
-      background-color: #fffffffc;
-    }
-  </style>
-
-  <!-- <style>
-    .header {
-      /* Remove grid-column property */
-      background-color: #2C2F2C;
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .sidebar {
-      /* Remove grid-column property */
-      margin-top: 10px;
-      background-color: #2C2F2C;
-      padding: 10px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
-    /* CSS for tabs */
-    .tab {
-      display: inline-block; /* Change display property to inline-block */
-      margin-right: 10px; /* Add margin between tabs */
-      cursor: pointer;
-      padding: 8px 16px;
-      background-color: #F7F9F7;
-      border: none;
-      border-radius: 4px;
-    }
-    .tab:hover {
-      background-color: #26700B;
-    }
-    .tab-content {
-      display: none;
-    }
-    .tab-content.active {
-      display: block;
-    }
-  </style> -->
-
-  <script>
-    // JavaScript for tabs
-    function openTab(tabId) {
-      // Hide all tab contents
-      var tabContents = document.getElementsByClassName('tab-content');
-      for (var i = 0; i < tabContents.length; i++) {
-        tabContents[i].classList.remove('active');
-      }
-      // Show the selected tab content
-      document.getElementById(tabId).classList.add('active');
-    }
-  </script>
-</head>
-
-<body>
-  <div class="header">
-    <h1 style="color:  #DCE2DC">Bike Share Toronto Analysis</h1>
-      <div class="sidebar">
-      <div class="tab" onclick="window.location.href='{{ url_for('home') }}'">Overview</div>
-      <div class="tab" onclick="window.location.href='{{ url_for('analysis') }}'">Analysis</div>
-      <div class="tab" onclick="window.location.href='{{ url_for('map') }}'">Map Visualization</div>
-    </div>
+{% block body %}
+<div class="header">
+  <h1 style="color:  #DCE2DC">Bike Share Toronto Analysis</h1>
+    <div class="sidebar">
+    <div class="tab" onclick="window.location.href='{{url_for('home')}}'">Overview</div>
+    <div class="tab" onclick="window.location.href='{{url_for('analysis')}}'">Analysis</div>
+    <div class="tab" onclick="window.location.href='{{url_for('map')}}'">Map Visualization</div>
   </div>
-  <div id="map"></div>
-  <!-- Our JavaScript file -->
-  <script>
-    const url = "{{url_for('summary')}}";
-    const flowmapURL = "{{url_for('flowmap')}}";
-  </script>
-  <script type="text/javascript" src="{{url_for('static', filename='js/bst-leaflet.js')}}"></script>
-</body>
-</html>
+</div>
+<div id="map"></div>
+<script>
+  const url = "{{url_for('summary')}}";
+  const flowmapURL = "{{url_for('flowmap')}}";
+</script>
+<script type="text/javascript" src="{{url_for('static', filename='js/bst-leaflet.js')}}"></script>
+{% endblock %}
+
+
+
 
 
 

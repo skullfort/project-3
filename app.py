@@ -10,21 +10,14 @@ mongo = MongoClient(port=27017)
 @app.route("/")
 @app.route("/home")
 def home():
-    # Link the template with a specific route or URL, meaning that a specific template should be rendered or generated
-    # whenever the user goes the corresponding URL.
     return render_template("home.html")
 
 @app.route("/analysis")
 def analysis():
-    # Link the template with a specific route or URL, meaning that a specific template should be rendered or generated
-    # whenever the user goes the corresponding URL.
     return render_template("analysis.html")
 
 @app.route("/map")
 def map():
-    # Link the template with a specific route or URL, meaning that a specific template should be rendered or generated
-    # whenever the user goes the corresponding URL.
-    # return render_template("map.html")
     return render_template("map.html")
 
 @app.route("/api/flowmap.json")
