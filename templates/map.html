@@ -1,4 +1,4 @@
-{% extends "home.html" %}
+{% extends "base.html" %}
 {% block title %}Map{% endblock %}
 {% block head %}
   {{ super() }}
@@ -23,7 +23,7 @@
 
   <!-- Bike Icons -->
   <script src="{{url_for('static', filename='js/leaflet.extra-markers.min.js')}}"></script>
-  <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="{{url_for('static', filename='css/leaflet.extra-markers.min.css')}}">
 
   <!-- GroupedLayers -->
@@ -44,7 +44,7 @@
 <div class="header">
   <h1 style="color:  #DCE2DC">Bike Share Toronto Analysis</h1>
     <div class="sidebar">
-    <div class="tab" onclick="window.location.href='{{url_for('home')}}'">Overview</div>
+    <div class="tab" onclick="window.location.href='{{url_for('index')}}'">Overview</div>
     <div class="tab" onclick="window.location.href='{{url_for('analysis')}}'">Analysis</div>
     <div class="tab" onclick="window.location.href='{{url_for('map')}}'">Map Visualization</div>
   </div>

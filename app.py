@@ -8,15 +8,14 @@ mongo = MongoClient(port=27017)
 
 # Mapping of a URL with a function
 @app.route("/")
-@app.route("/home")
-def home():
-    return render_template("home.html")
+def index():
+    return render_template("index.html")
 
-@app.route("/analysis")
+@app.route("/analysis/")
 def analysis():
     return render_template("analysis.html")
 
-@app.route("/map")
+@app.route("/map/")
 def map():
     return render_template("map.html")
 
