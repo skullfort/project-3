@@ -1,7 +1,5 @@
 // Initialize webpage
 
-// let url = './data/data_summary.json';
-
 function init() {
   d3.json(url).then(
     function (Res) {
