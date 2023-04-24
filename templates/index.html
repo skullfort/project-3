@@ -4,7 +4,23 @@
 {% block content %}
   <div class="tab-content active" id="home">
     <h2 style="color: rgb(6, 4, 4); font-weight: bold; font-size: 45px;">Overview</h2>
-    <p>The aim of our project is to see how the biking system in Toronto can be improved, the key differences of casual and annual members, and what story do the bike stations tell. We’ll examine relationships between the bike locations, paths each bike takes, the duration of usage, type of membership, etc.</p>
+    <p>
+      This site hosts a few interactive visualization tools that aim to shed light on ridership within the Bike Share Toronto system one year after the launch of its 4-year growth plan (2022-2025). The study focuses on the historical data of 2021 as the basis of comparison for ridership in 2022.
+    </p>
+    <h3 style="color: rgb(6, 4, 4); font-weight: bold; font-size: 30px;">Analysis</h3>
+    <ul>
+      <li style="font-size: 30px;">User can select trip count or average trip duration in the dropdown list for metric of interest.</li>
+      <li style="font-size: 30px;">User can isolate or group the comparison between user types for each year by clicking on the legends on the right-hand side.</li>
+    </ul>
+    <h3 style="color: rgb(6, 4, 4); font-weight: bold; font-size: 30px;">Map Visualization</h3>
+    </ul>
+      <li style="font-size: 30px;">The base maps include a street view and a dark view.</li>
+      <li style="font-size: 30px;">The overlays are grouped by years.</li>
+      <li style="font-size: 30px;">The first overlay for 2021 plots the stations in service and for 2022 plots new additions that year.</li>
+      <li style="font-size: 30px;">The second overlay plots the percentage of casual trips of all trips made from each station. The radius of each circle scales with the total number of trips made from each station.</li>
+      <li style="font-size: 30px;">The third overlay plots of the average duration of casual trips made from each station. The radius of each circle scales with the total number of casual trips made from each station.</li>
+      <li style="font-size: 30px;">2022 includes an additional flow map that illustrates traffic to the busiest bike station during morning rush hour.</li>
+    </ul>
   </div>
   <div class="tab-content" id="analysis"></div>
   <div class="tab-content" id="map"></div>
