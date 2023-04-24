@@ -1,5 +1,6 @@
 # Bike Share Toronto: A Retrospect
 
+![](https://komarev.com/ghpvc/?username=skullfort&color=green&label=visits)
 Last Update: 2023-04-24
 
 Bike Share Toronto is a bike-sharing system that's been expanding since 2011. The aim of this project is to create interactive visualization tools that shed light on ridership within the system after one year of the launch of its 4-year growth plan (2022-2025). The web deloyment of these visualizations can be found [here](https://skullfort.github.io/bst-demo). The workflow for the project is documented as follows. 
