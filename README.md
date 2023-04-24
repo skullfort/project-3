@@ -7,7 +7,7 @@ Group Members: Carly Yiao, Gustavo Pires, Richard Gu, Tina Saravi, and Varun Vin
 
 Last Update: 2023-04-24
 
-Bike Share Toronto is a bike-sharing system that's been expanding since 2011. The aim of this project is to create interactive visualization tools that shed light on ridership within the system after one year of the launch of its 4-year growth plan (2022-2025). The web deloyment of these visualizations can be found [here](https://skullfort.github.io/bst-demo). The workflow for the project is documented as follows. 
+Bike Share Toronto is a bike-sharing system that's been expanding since 2011. The aim of this project is to create interactive visualization tools that shed light on trends in ridership within the system one year after the launch of its 4-year growth plan (2022-2025). The web deloyment of these visualizations can be found [here](https://skullfort.github.io/bst-demo). The workflow for the project is documented as follows. 
 
 ## ETL
 
@@ -30,7 +30,9 @@ The ETL steps leading up to data import into MongoDB can be skipped if the user 
     mongoimport --type json -d bst -c flowmap --drop --jsonArray flowmap.json
     ```
 ## Flask
-- Run [app.py](app.py) from directory to deploy the app locally.
+- Run [app.py](app.py) from the root directory to deploy the app locally.
 
 ## Frozen-Flask (Optional)
 - Run [freeze.py](freeze.py) to freeze the Flask app into a set of static files. The files in the resulting `build` folder can be uploaded to Github for remote deployment.
+
+Key findings of the project are detailed in our [presentation](docs/Bike%20Share%20Project.pptx) to the USCS Data Analytics Boot Camp class on April 24, 2023.
