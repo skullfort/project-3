@@ -35,4 +35,4 @@ The ETL steps leading up to data import into MongoDB can be skipped if the user 
 ## Frozen-Flask (Optional)
 - Run [freeze.py](freeze.py) to freeze the Flask app into a set of static files. The files in the resulting `build` folder can be uploaded to Github for remote deployment.
 
-Key findings of the project are detailed in our [presentation](docs/Bike%20Share%20Project.pptx) to the USCS Data Analytics Boot Camp class on April 24, 2023.
+Key findings of the project are detailed in our [presentation](docs/bike-share-final.pptx) to the USCS Data Analytics Boot Camp class on April 24, 2023.
