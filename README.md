@@ -1,6 +1,6 @@
 # Bike Share Toronto: A Retrospect
 
-Group Members: Carly Yiao, Gustavo Pires, Richard Gu, Tina Saravi, and Varun Vinodh
+Group Members: Carly Yiao, Gustavo Pires, Mingyao Gu, Tina Saravi, and Varun Vinodh
 
 
 ![](https://komarev.com/ghpvc/?username=skullfort&color=green&label=visits)
