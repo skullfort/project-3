@@ -1,4 +1,4 @@
-# Bike Share Toronto: A Retrospect
+# Bike Share Toronto: A Retrospective Analysis
 
 Group Members: Carly Yiao, Gustavo Pires, Mingyao Gu, Tina Saravi, and Varun Vinodh
 
